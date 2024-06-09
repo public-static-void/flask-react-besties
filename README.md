@@ -13,3 +13,6 @@
     cd backend
     flask run
 
+###### Or:
+
+    python ./backend/wsgi.py
