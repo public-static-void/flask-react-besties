@@ -34,7 +34,6 @@ const Navbar = ({ setUsers }) => {
             <Text fontSize={"40px"}>=</Text>
             <img src="/explode.png" alt="explode head" width={50} height={45} />
           </Flex>
-          Center
           <Flex gap={3} alignItems={"center"}>
             <Text
               fontSize={"lg"}
