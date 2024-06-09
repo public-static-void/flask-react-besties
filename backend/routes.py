@@ -1,5 +1,4 @@
 from flask import jsonify, request
-
 from models import Friend, db
 
 
@@ -21,7 +20,7 @@ def init_routes(app):
             required_field = ["name", "role", "description", "gender"]
             missing_fields = []
             for field in required_field:
-                if field not in friend:
+                if field not in friend or not friend.get(field):
                     missing_fields.append(field)
             if len(missing_fields) != 0:
                 return (
@@ -48,7 +47,7 @@ def init_routes(app):
                 )
             elif gender == "female":
                 img_url = (
-                    f"http://avatar.iran.liara.run/public/boy?username={avnm}"
+                    f"http://avatar.iran.liara.run/public/girl?username={avnm}"
                 )
             else:
                 img_url = None
@@ -100,6 +99,23 @@ def init_routes(app):
             if friend is None:
                 return jsonify({"message": "Friend not found"}), 404
             friend_data = request.json
+
+            required_field = ["name", "role", "description"]
+            missing_fields = []
+            for field in required_field:
+                if field not in friend_data or not friend_data.get(field):
+                    missing_fields.append(field)
+            if len(missing_fields) != 0:
+                return (
+                    jsonify(
+                        {
+                            "error": (
+                                f"Missing required field(s): {missing_fields}"
+                            )
+                        }
+                    ),
+                    400,
+                )
 
             friend.name = friend_data.get("name", friend.name)
             friend.role = friend_data.get("role", friend.role)
