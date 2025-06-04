@@ -1,7 +1,7 @@
 blinker==1.8.2
 click==8.1.7
 Flask==3.0.3
-Flask-Cors==5.0.0
+Flask-Cors==6.0.0
 Flask-SQLAlchemy==3.1.1
 greenlet==3.0.3
 gunicorn==23.0.0
