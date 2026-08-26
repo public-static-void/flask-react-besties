@@ -205,3 +205,6 @@ sketch
 
 # End of https://www.toptal.com/developers/gitignore/api/database
 
+# Knowledge Documents (runtime KDs — not version-controlled)
+knowledge/
+
