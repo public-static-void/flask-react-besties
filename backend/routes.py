@@ -78,7 +78,7 @@ def init_routes(app):
     @app.route("/api/friends/<int:id>", methods=["DELETE"])
     def delete_friend(id):
         try:
-            friend = Friend.query.get(id)
+            friend = db.session.get(Friend, id)
             if friend is None:
                 return jsonify({"message": "Friend not found"}), 404
             db.session.delete(friend)
@@ -95,7 +95,7 @@ def init_routes(app):
     @app.route("/api/friends/<int:id>", methods=["PATCH"])
     def update_friend(id):
         try:
-            friend = Friend.query.get(id)
+            friend = db.session.get(Friend, id)
             if friend is None:
                 return jsonify({"message": "Friend not found"}), 404
             friend_data = request.json
